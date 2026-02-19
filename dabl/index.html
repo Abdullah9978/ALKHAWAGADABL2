@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الخواجة للزجاج</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <nav class="main-nav">
+            <button onclick="showPage('calcPage')" id="btnCalc" class="active">الحساب</button>
+            <button onclick="showPage('managePage')" id="btnManage">إدارة الخامات</button>
+        </nav>
+
+        <div id="managePage" class="page hidden">
+            <h2><i class="fa-solid fa-boxes-stacked"></i> إدارة المواد</h2>
+            
+            <section class="manage-section">
+                <h3>إضافة عود جورجا</h3>
+                <div class="input-row">
+                    <input type="text" id="newStickName" placeholder="اسم العود">
+                    <input type="number" id="newStickWidth" placeholder="العرض (سم)">
+                    <button onclick="addItem('sticks')">+</button>
+                </div>
+                <ul id="sticksList" class="data-list"></ul>
+            </section>
+
+            <section class="manage-section">
+                <h3>إضافة نوع وردة</h3>
+                <div class="input-row">
+                    <input type="text" id="newDecoName" placeholder="اسم الوردة">
+                    <input type="number" id="newDecoW" placeholder="العرض">
+                    <input type="number" id="newDecoH" placeholder="الارتفاع">
+                    <button onclick="addItem('decos')">+</button>
+                </div>
+                <ul id="decosList" class="data-list"></ul>
+            </section>
+        </div>
+
+        <div id="calcPage" class="page">
+            <header>
+                <h1>بيانات الزجاج والتقسيم</h1>
+            </header>
+
+            <form id="calcForm">
+                <div class="input-group">
+                    <label>اسم العميل</label>
+                    <input type="text" id="customerName" placeholder="الاسم للتقرير">
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>ارتفاع الزجاج (سم)</label>
+                        <input type="number" id="glassHeight" placeholder="0.0">
+                    </div>
+                    <div class="input-group">
+                        <label>عرض الزجاج (سم)</label>
+                        <input type="number" id="glassWidth" placeholder="0.0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>خطوط العرض (أفقي)</label>
+                        <input type="number" id="hLines" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>خطوط الطول (رأسي)</label>
+                        <input type="number" id="vLines" value="0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>العود</label>
+                        <select id="selectStick"></select>
+                    </div>
+                    <div class="input-group">
+                        <label>الورد</label>
+                        <select id="selectDeco" disabled></select>
+                    </div>
+                </div>
+
+                <div class="switch-container">
+                    <span>تفعيل الورد؟</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hasDecoration" onchange="toggleDecoSelect()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <button type="button" class="btn-calculate" onclick="calculate()">احسب وارسم</button>
+            </form>
+
+            <div id="canvasContainer" class="hidden">
+                <h3>الرسم التوضيحي للتقسيم:</h3>
+                <canvas id="glassCanvas"></canvas>
+            </div>
+
+            <div id="results" class="results-container hidden">
+                <h3>نتائج التخصيم</h3>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

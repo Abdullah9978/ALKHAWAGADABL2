@@ -1,0 +1,54 @@
+:root {
+    --primary: #1a237e;
+    --accent: #ff5722;
+    --bg: #f0f2f5;
+    --white: #ffffff;
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
+.app-container { max-width: 500px; margin: auto; background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+/* Navigation */
+.main-nav { display: flex; background: #eee; }
+.main-nav button { flex: 1; padding: 15px; border: none; cursor: pointer; font-weight: bold; font-size: 1rem; }
+.main-nav button.active { background: var(--primary); color: white; }
+
+.page { padding: 20px; }
+.hidden { display: none; }
+
+h1, h2, h3 { color: var(--primary); text-align: center; }
+
+/* Manage Section */
+.manage-section { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+.input-row { display: flex; gap: 5px; margin-bottom: 10px; }
+.input-row input { flex: 2; padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+.input-row button { flex: 1; background: green; color: white; border: none; border-radius: 5px; font-size: 20px; }
+
+.data-list { list-style: none; padding: 0; }
+.data-list li { display: flex; justify-content: space-between; background: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; border-right: 4px solid var(--primary); }
+.btn-del { color: red; cursor: pointer; border: none; background: none; }
+
+/* Form */
+.input-group { margin-bottom: 15px; flex: 1; }
+.input-group label { display: block; font-size: 0.85rem; margin-bottom: 5px; color: #555; }
+input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+.row { display: flex; gap: 10px; }
+
+.switch-container { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f0f4ff; border-radius: 8px; margin: 15px 0; }
+.btn-calculate { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 1.1rem; cursor: pointer; }
+
+/* Drawing Canvas */
+#canvasContainer { text-align: center; margin-top: 20px; }
+#glassCanvas { background: #e0f7fa; border: 2px solid #006064; max-width: 100%; border-radius: 5px; }
+
+.results-container { margin-top: 20px; padding: 15px; background: #fffde7; border-radius: 10px; border: 1px solid #ffd54f; }
+.res-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #ccc; }
+
+/* Switch CSS */
+.switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(22px); }
+
